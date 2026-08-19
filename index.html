@@ -7,6 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <title>glo.club</title>
+<meta name="description" content="Glo Club tracks K-beauty prices across YesStyle, Stylevana, Olive Young, and StyleKorean, and tells you the moment your favorite serum, sunscreen, or toner drops in price.">
+<meta property="og:title" content="Glo Club — one price worth paying">
+<meta property="og:description" content="We watch K-beauty prices across YesStyle, Stylevana, Olive Young, and StyleKorean so you don't have to.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gloclub999.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glo Club — one price worth paying">
+<meta name="twitter:description" content="We watch K-beauty prices across YesStyle, Stylevana, Olive Young, and StyleKorean so you don't have to.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Anton&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
@@ -64,12 +72,14 @@
       linear-gradient(120deg, #22223B 0%, #4A4E69 35%, #9A8C98 65%, #C9ADA7 100%);
     overflow:hidden;
     display:flex; align-items:center;
+    will-change:transform;
+    transform:translateZ(0);
   }
   .banner::before{
     content:"";
     position:absolute; inset:0;
-    background-image:repeating-linear-gradient(115deg, rgba(0,0,0,0.06) 0px, transparent 2px, transparent 40px);
-    mix-blend-mode:overlay;
+    background-image:repeating-linear-gradient(115deg, rgba(0,0,0,0.05) 0px, transparent 2px, transparent 40px);
+    opacity:0.5;
   }
   .banner-inner{
     position:relative; z-index:2;
@@ -172,7 +182,7 @@
   .polaroid{
     background:#fff;
     padding:12px 12px 20px;
-    box-shadow:0 14px 30px -12px rgba(23,20,18,0.28);
+    box-shadow:0 8px 16px -8px rgba(23,20,18,0.28);
   }
   .polaroid:nth-child(1){transform:rotate(-2.5deg);}
   .polaroid:nth-child(2){transform:rotate(1.5deg);}
