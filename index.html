@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#22223B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <title>glo.club</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,6 +241,45 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     font-size:12.5px; opacity:0.5;
   }
+  /* ===== mobile fixes (iPhone / Android) ===== */
+  @media(max-width:680px){
+    .wrap{padding:0 18px;}
+
+    header{padding:16px 0; flex-wrap:wrap; gap:10px;}
+    .journal-label, .divider{display:none;}
+    .logo{font-size:20px;}
+    nav{gap:14px;}
+    nav a:not(.subscribe-btn){display:none;}
+    .subscribe-btn{padding:9px 16px; font-size:13px;}
+    .icon-btn{font-size:18px; padding:4px;}
+
+    .banner{height:auto; min-height:320px; padding:36px 0;}
+    .banner-inner{flex-direction:column; align-items:flex-start; text-align:left; gap:20px;}
+    .banner-right{text-align:left;}
+    .script-mark{font-size:clamp(42px, 15vw, 64px);}
+    .headline-condensed{font-size:clamp(22px, 6vw, 30px);}
+
+    .filters{flex-wrap:wrap; padding:28px 0 4px;}
+    .filter{padding:8px 14px; font-size:13px;}
+
+    .featured-body{padding:26px 22px;}
+    .featured-art{min-height:200px;}
+
+    .polaroid-grid{gap:24px 14px;}
+    .polaroid{padding:8px 8px 16px;}
+    .polaroid-cap{font-size:15px;}
+
+    form.signup{max-width:100%;}
+    form.signup input[type="email"]{padding:12px 14px; font-size:14px;}
+    form.signup button{padding:12px 16px; font-size:12.5px;}
+
+    footer{flex-direction:column; align-items:flex-start; gap:6px;}
+  }
+
+  @media(max-width:400px){
+    .polaroid-grid{grid-template-columns:1fr 1fr; gap:18px 10px;}
+    .script-mark{font-size:clamp(38px, 16vw, 52px);}
+  }
 </style>
 </head>
 <body>
@@ -339,7 +381,7 @@
 
     <footer>
       <span>glo.club © 2026</span>
-      <span><a href="mailto:hello@gloclub.app">hello@gloclub.app</a></span>
+      <span><a href="mailto:gloclub99@gmail.com">gloclub99@gmail.com</a></span>
     </footer>
   </div>
 
