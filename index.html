@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>glo.club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Anton&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2E9E4;
+    --ink:#22223B;
+    --pink:#4A4E69;
+    --accent:#C9ADA7;
+    --soft:#9A8C98;
+    --line: rgba(34,34,59,0.14);
+    --grey: #E8DCD5;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--pink); color:#fff;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+
+  /* header — mirrors picky.club's exact formula */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .logo{font-weight:800; font-size:24px; letter-spacing:-0.01em;}
+  .logo span{font-weight:400; opacity:0.4;}
+  .divider{width:1px; height:22px; background:var(--line);}
+  .journal-label{font-size:17px; font-weight:600;}
+  nav{display:flex; align-items:center; gap:30px;}
+  nav a{font-size:14.5px; font-weight:500; opacity:0.8;}
+  nav a:hover{opacity:1;}
+  .icon-btn{font-size:16px; opacity:0.7; cursor:pointer;}
+  .subscribe-btn{
+    background:var(--ink); color:#fff;
+    padding:10px 22px; border-radius:24px;
+    font-size:14px; font-weight:600;
+  }
+
+  /* hero banner — full-bleed "photo" (simulated), script logo, bold headline, sticker tag */
+  .banner{
+    position:relative;
+    height:min(70vh, 560px);
+    min-height:400px;
+    background:
+      radial-gradient(ellipse at 15% 30%, rgba(201,173,167,0.4), transparent 55%),
+      radial-gradient(ellipse at 80% 75%, rgba(74,78,105,0.35), transparent 50%),
+      linear-gradient(120deg, #22223B 0%, #4A4E69 35%, #9A8C98 65%, #C9ADA7 100%);
+    overflow:hidden;
+    display:flex; align-items:center;
+  }
+  .banner::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(0,0,0,0.06) 0px, transparent 2px, transparent 40px);
+    mix-blend-mode:overlay;
+  }
+  .banner-inner{
+    position:relative; z-index:2;
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:24px;
+    padding:0 5%;
+  }
+  .script-mark{
+    font-family:'Pinyon Script', cursive;
+    font-size:clamp(56px, 9vw, 118px);
+    color:#fff;
+    line-height:1;
+    text-shadow:0 4px 30px rgba(0,0,0,0.35);
+  }
+  .banner-right{text-align:right;}
+  .headline-condensed{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(26px, 3.4vw, 42px);
+    color:#fff;
+    line-height:1.05;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+  }
+  .sticker{
+    display:inline-block;
+    background:var(--pink);
+    color:#fff;
+    font-family:'Anton', sans-serif;
+    font-size:14px;
+    letter-spacing:0.04em;
+    padding:8px 16px;
+    margin-top:16px;
+    transform:rotate(-4deg);
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  }
+
+  /* filter pills */
+  .filters{
+    display:flex; gap:10px;
+    justify-content:center;
+    padding:36px 0 8px;
+  }
+  .filter{
+    font-size:14px; font-weight:600;
+    padding:9px 18px; border-radius:20px;
+    color:var(--ink); opacity:0.55;
+  }
+  .filter.active{background:var(--grey); opacity:1;}
+
+  /* featured */
+  .featured-label{
+    font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    opacity:0.5;
+    padding:44px 0 18px;
+  }
+  .featured{
+    display:grid; grid-template-columns:1fr; gap:0;
+    border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  @media(min-width:860px){ .featured{grid-template-columns:1fr 1fr;} }
+  .featured-art{
+    min-height:280px;
+    background:linear-gradient(140deg, #22223B, #4A4E69 60%, #C9ADA7);
+    position:relative;
+  }
+  .featured-art .tag{
+    position:absolute; top:16px; left:16px;
+    background:var(--ink); color:#fff;
+    font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:6px 12px;
+  }
+  .featured-body{padding:38px 36px; display:flex; flex-direction:column; justify-content:center;}
+  .featured-body h1{font-size:clamp(24px, 3vw, 32px); font-weight:700; line-height:1.15;}
+  .featured-body p{margin-top:14px; font-size:15px; opacity:0.7; max-width:42ch;}
+  .featured-meta{margin-top:18px; font-size:12.5px; opacity:0.5;}
+
+  /* polaroid diary grid — the signature element, from yoo-hee */
+  .diary{padding:70px 0 30px;}
+  .diary-head{text-align:center; margin-bottom:44px;}
+  .diary-head h2{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(24px, 3vw, 34px);
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  .diary-head p{
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    margin-top:6px;
+    opacity:0.65;
+  }
+  .polaroid-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:36px 24px;
+    padding-bottom:20px;
+  }
+  @media(min-width:700px){ .polaroid-grid{grid-template-columns:repeat(3, 1fr);} }
+  .polaroid{
+    background:#fff;
+    padding:12px 12px 20px;
+    box-shadow:0 14px 30px -12px rgba(23,20,18,0.28);
+  }
+  .polaroid:nth-child(1){transform:rotate(-2.5deg);}
+  .polaroid:nth-child(2){transform:rotate(1.5deg);}
+  .polaroid:nth-child(3){transform:rotate(-1deg);}
+  .polaroid:nth-child(4){transform:rotate(2deg);}
+  .polaroid:nth-child(5){transform:rotate(-1.8deg);}
+  .polaroid:nth-child(6){transform:rotate(1deg);}
+  .polaroid-photo{
+    aspect-ratio:1/1;
+    background-size:cover;
+  }
+  .polaroid-photo.a{background:linear-gradient(150deg,#C9ADA7,#4A4E69);}
+  .polaroid-photo.b{background:linear-gradient(150deg,#9A8C98,#22223B);}
+  .polaroid-photo.c{background:linear-gradient(150deg,#F2E9E4,#C9ADA7);}
+  .polaroid-photo.d{background:linear-gradient(150deg,#4A4E69,#9A8C98);}
+  .polaroid-photo.e{background:linear-gradient(150deg,#22223B,#9A8C98);}
+  .polaroid-photo.f{background:linear-gradient(150deg,#C9ADA7,#22223B);}
+  .polaroid-cap{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size:17px;
+    text-align:center;
+    margin-top:10px;
+    color:var(--ink);
+  }
+
+  /* black divider band, MD's Choice style */
+  .band{
+    background:var(--ink); color:#fff;
+    text-align:center;
+    padding:34px 0;
+    margin-top:40px;
+  }
+  .band h3{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(20px, 2.6vw, 28px);
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+  }
+  .band p{margin-top:8px; font-size:13.5px; opacity:0.6;}
+
+  /* subscribe */
+  .subscribe{padding:60px 0; text-align:center;}
+  .subscribe h2{font-size:clamp(22px,3vw,30px); font-weight:700;}
+  .subscribe > p{margin-top:10px; opacity:0.65; font-size:14px;}
+  form.signup{
+    margin:22px auto 0; display:flex; max-width:380px;
+    border:1.5px solid var(--ink); border-radius:24px; overflow:hidden;
+  }
+  form.signup input[type="email"]{
+    flex:1; border:none; background:transparent;
+    padding:12px 18px; font-size:14px; font-family:'Inter', sans-serif;
+  }
+  form.signup input[type="email"]:focus-visible{outline:none;}
+  form.signup button{
+    border:none; background:var(--ink); color:#fff;
+    padding:12px 22px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  form.signup button:hover{background:var(--pink);}
+  .form-success{margin-top:14px; font-size:13px; font-weight:700; color:var(--pink); display:none;}
+  .form-success.show{display:block;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0 40px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12.5px; opacity:0.5;
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">glo<span>.</span>club</div>
+        <div class="divider"></div>
+        <div class="journal-label">Journal</div>
+      </div>
+      <nav>
+        <a href="#">Picks</a>
+        <a href="#">Instagram</a>
+        <a href="#">Glo App</a>
+        <span class="icon-btn">⌕</span>
+        <a href="#subscribe" class="subscribe-btn">Subscribe</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="banner">
+    <div class="banner-inner">
+      <div class="script-mark">Glo Club</div>
+      <div class="banner-right">
+        <div class="headline-condensed">the first<br>price drop issue</div>
+        <div class="sticker">VOL. 01</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="filters">
+      <a href="#" class="filter active">See All</a>
+      <a href="#" class="filter">Price Drops</a>
+      <a href="#" class="filter">Restocks</a>
+    </div>
+
+    <div class="featured-label">Featured</div>
+    <div class="featured">
+      <div class="featured-art"><span class="tag">Price Watch</span></div>
+      <div class="featured-body">
+        <h1>Same serum, four price tags.</h1>
+        <p>Glo Club watches your K-beauty picks across YesStyle, Stylevana, Olive Young, and StyleKorean, and tells you the moment one drops.</p>
+        <div class="featured-meta">Launching soon · one shopper, tired of five open tabs</div>
+      </div>
+    </div>
+
+    <div class="diary">
+      <div class="diary-head">
+        <h2>What's on the shelf</h2>
+        <p>a few things we're watching this week</p>
+      </div>
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <div class="polaroid-photo a"></div>
+          <div class="polaroid-cap">relief sun, $16.75 on yesstyle</div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid-photo b"></div>
+          <div class="polaroid-cap">snail mucin, back on stylevana</div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid-photo c"></div>
+          <div class="polaroid-cap">heartleaf toner, cheapest today</div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid-photo d"></div>
+          <div class="polaroid-cap">dive-in serum, $4 spread</div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid-photo e"></div>
+          <div class="polaroid-cap">birch sunscreen, restocked</div>
+        </div>
+        <div class="polaroid">
+          <div class="polaroid-photo f"></div>
+          <div class="polaroid-cap">hyaluronic toner, quietly cheaper</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <h3>Glo Club Picks</h3>
+    <p>a running list, updated as prices move</p>
+  </div>
+
+  <div class="wrap">
+    <div class="subscribe" id="subscribe">
+      <h2>Get the drops in your inbox</h2>
+      <p>No feed, no noise. One email when your watched item hits a new low.</p>
+      <form class="signup" id="signupForm" novalidate>
+        <label for="email" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+        <button type="submit">Join</button>
+      </form>
+      <p class="form-success" id="formSuccess" role="status">you're on the list — we'll write when it's ready.</p>
+    </div>
+
+    <footer>
+      <span>glo.club © 2026</span>
+      <span><a href="mailto:hello@gloclub.app">hello@gloclub.app</a></span>
+    </footer>
+  </div>
+
+<script>
+  // NOTE FOR DEV: no backend wired yet. Point this at Formspree, Getform,
+  // or a small serverless endpoint, then replace the localStorage line
+  // with: fetch('YOUR_ENDPOINT', { method:'POST', body: new FormData(form) })
+  const form = document.getElementById('signupForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const input = form.querySelector('input[type="email"]');
+    if(!input.checkValidity()){ input.reportValidity(); return; }
+    try{
+      const list = JSON.parse(localStorage.getItem('gloclub_waitlist') || '[]');
+      list.push(input.value);
+      localStorage.setItem('gloclub_waitlist', JSON.stringify(list));
+    }catch(err){}
+    success.classList.add('show');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
