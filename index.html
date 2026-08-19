@@ -396,22 +396,31 @@
   </div>
 
 <script>
-  // NOTE FOR DEV: no backend wired yet. Point this at Formspree, Getform,
-  // or a small serverless endpoint, then replace the localStorage line
-  // with: fetch('YOUR_ENDPOINT', { method:'POST', body: new FormData(form) })
+  // Replace this with your real Formspree endpoint (formspree.io -> New Form -> copy the URL)
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xoeapgrr";
+
   const form = document.getElementById('signupForm');
   const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
     const input = form.querySelector('input[type="email"]');
     if(!input.checkValidity()){ input.reportValidity(); return; }
+
     try{
-      const list = JSON.parse(localStorage.getItem('gloclub_waitlist') || '[]');
-      list.push(input.value);
-      localStorage.setItem('gloclub_waitlist', JSON.stringify(list));
-    }catch(err){}
-    success.classList.add('show');
-    form.reset();
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if(res.ok){
+        success.classList.add('show');
+        form.reset();
+      } else {
+        alert("Something went wrong — try again in a moment.");
+      }
+    } catch(err){
+      alert("Something went wrong — try again in a moment.");
+    }
   });
 </script>
 
